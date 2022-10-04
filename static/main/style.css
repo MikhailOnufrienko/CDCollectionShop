@@ -1,0 +1,22 @@
+header {
+    background: url("header-bg.jpg") center / auto 100% round;
+}
+
+.root {
+    font-size: larger;
+}
+
+.rotated {
+    position: relative;
+    transform: rotate(-90deg) translateX(-28vw) translateY(2vw);
+    transform-origin: bottom left;
+}
+
+.responsive-font {
+    font-size: 1.5vw;
+}
+
+label, select {
+    display: inline-block;
+    vertical-align: middle;
+}

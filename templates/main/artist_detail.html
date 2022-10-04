@@ -1,0 +1,49 @@
+{% extends './basic.html' %}
+
+{% load static %}
+
+{% block title %}{{ artist }}{% endblock title %}
+
+{% block content %}
+
+    <div>
+        <div>
+            <img src="{% get_static_prefix %}main/bands/{{ artist.slug }}.jpg"
+            style="width: 300px;" alt="{{ artist }}" title="{{ artist }}">
+        </div>
+        <div>
+            <h3>
+                {{ artist }}
+            </h3>
+        </div>
+        <div>
+            <div>
+                {% if not artist.item_set.all %}
+                    <h4>
+                        К сожалению, релизов данного исполнителя в продаже пока нет.
+                    </h4>
+                {% else %}
+                <h4>
+                    Релизы исполнителя в продаже:
+                </h4>
+            </div>
+            <div>
+                {% for item in artist.item_set.all %}
+                    <div>
+                        <div>
+                            <a href="{% url 'main:item_detail' item.pk item.slug %}">
+                                <img src="{% get_static_prefix %}main/covers/{{ item.pk }}.jpg"
+                                style="width: 350px;" alt="{{ item }}" title="{{ album }}">
+                            </a>
+                            <h5>
+                                {{ item }} ({{ item.year }}, {{ item.labels }})
+                            </h5>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+ 
+{% endblock content %}

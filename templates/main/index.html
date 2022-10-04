@@ -1,0 +1,91 @@
+{% extends './basic.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <h2>
+        Каталог
+    </h2>
+    <div class="container-fluid"> 
+        <div class="row">
+            {% for album in page %} 
+                <div class="col-md-6 border-right">
+                    <div class="row">
+                        <div class="col-md-11 pr-0">
+                            <a href="{% url 'main:item_detail' album.pk album.slug %}">
+                                <img src="{% get_static_prefix %}main/covers/{{ album.pk }}.jpg"
+                                class="figure-img img-fluid img-thumbnail"
+                                style="width: auto; height: auto;" alt="{{ album.artists.all|join:', ' }} — {{ album }}"
+                                title="{{ album.artists.all|join:', ' }} — {{ album }}">
+                            </a>
+                        </div>
+                        <div class="col-md-1 pl-0">
+                            <p class="rotated responsive-font">
+                                {{ album.styles.all|join:'/' }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-11 pr-0 text-center">
+                            <strong>
+                                {{ album.artists.all|join:', ' }} — {{ album }}
+                            </strong>
+                            <small class="text-muted">
+                                ({{ album.year }}, {{album.item_type}}, {{ album.labels }})
+                            </small>
+                        </div> 
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-11 pr-0 d-flex p-0 justify-content-around">
+                            <div class="p-2 font-weight-bold">
+                                &#8381;{{ album.price }}
+                            </div>
+                            <div>
+                                <label for="select" class="my-2 d-inline-block align-middle">
+                                    Кол-во:
+                                </label>
+                                <select class="select d-inline-block align-middle">
+                                    {% for i in album.get_quantity %}
+                                        <option value="{{ i }}">
+                                            {{ i }}
+                                        </option>
+                                    {% endfor %}
+                                </select>  
+                            </div>
+                            <button type="button" class="add-button btn btn-secondary btn-sm" value="{{ album.id }}">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            {% if page.has_other_pages %}
+                {% include 'main/paginator.html' with items=page paginator=paginator %}
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        $(document).on('click', '.add-button', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '#',
+                data: {
+                    item_id: $('.add-button').val(),
+                    item_quantity: $('.select option:selected').text(),
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                    action: 'post'
+                },
+                success: function (json) {
+                    document.getElementById("basket-quantity").innerHTML = json.quantity
+                },
+                error: function (xhr, errmsg, err) {}
+            });
+        })
+    </script>
+
+{% endblock content %}

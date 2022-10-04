@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
+    'main',
 ]
 
 MIDDLEWARE = [
@@ -37,7 +39,7 @@ ROOT_URLCONF = 'CDCollectionShop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -54,8 +56,12 @@ WSGI_APPLICATION = 'CDCollectionShop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cdcollectionshop',
+        'USER': 'root',
+        'PASSWORD': 'GhastangsTmihan',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 
@@ -83,5 +89,9 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = '/static/'
+
+STATICFILES_DIRS = [(BASE_DIR / 'static'),]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
