@@ -43,11 +43,11 @@
             e.preventDefault();
             $.ajax({
                 type: 'POST',
-                url: '#',
+                url: '{% url "basket:basket_add" %}',
                 data: {
                     item_id: $('#add-button').val(),
                     item_quantity: $('#select option:selected').text(),
-                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
                     action: 'post'
                 },
                 success: function (json) {

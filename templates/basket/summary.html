@@ -1,0 +1,113 @@
+{% extends 'main/basic.html' %}
+{% load static %}
+
+{% block title %}Содержимое корзины{% endblock title %}
+
+{% block content %}
+
+<main class="pt-5">
+    <div class="container">
+        <h2>
+            Ваша корзина:
+        </h2>
+        {% for thing in basket %}
+        {% with item=thing.item %}
+            <div data-index="{{ item.id }}" class="row mb-4 border item-thing">
+                <img src="{% get_static_prefix %}main/covers/{{ item.pk }}.jpg" style="width: 300px;"
+                alt="{{ item.artists.all|join:', ' }} — {{ item }}"
+                title="{{ item.artists.all|join:', ' }} — {{ album }}">
+                <div>
+                    <h6>
+                        {{ item.artists.all|join:', ' }} — {{ item }} ({{ item.year }}, {{ item.get_labels }})
+                    </h6>
+                </div>
+                <div class="p-2">
+                    {{ item.price }}
+                </div>
+                <div class="p-1">
+                    <label for="select">
+                        Кол-во
+                    </label>
+                    <select id="select{{ item.id }}">
+                        <option selected>
+                            {{ thing.quantity }}
+                        </option>
+                        {% for i in item.get_quantity %}
+                            <option value="{{ i }}">
+                                {{ i }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <button type="button" id="update-button" data-index="{{ item.id }}" class="btn btn-outline-secondary btn-sm update-button">
+                        Обновить
+                    </button>
+                    <button type="button" id="delete-button" data-index="{{ item.id }}" class="btn btn-outline-secondary btn-sm delete-button">
+                        Удалить
+                    </button>
+                    <a role="button" href="#" class="btn btn-success fw-bold" type="button">
+                        Checkout
+                    </a>
+                    <button class="btn btn-light" type="button">
+                        Save for later
+                    </button>
+                </div>
+            </div>
+        {% endwith %}
+        {% endfor %}
+            <div class="col-12 text-end">
+                <div class="h6 fw-bold">
+                    Subtotal: €
+                    <div id="subtotal" class="d-inline-flex">
+                        {{ basket.get_total_price }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    // Thing deletion.
+    $(document).on('click', '.delete-button', function (e) {
+        e.preventDefault();
+        var thing_id = $(this).data('index');
+        $.ajax({
+            type: 'POST',
+            url: '{% url "basket:basket_delete" %}',
+            data: {
+                item_id: $(this).data('index'),
+                csrfmiddlewaretoken: "{{ csrf_token }}",
+                action: 'post'
+            },
+            success: function (json) {
+                $('.item-thing[data-index="'+ thing_id + '"]').remove(),
+                document.getElementById("basket-quantity").innerHTML = json.quantity
+                document.getElementById("subtotal").innerHTML = json.subtotal
+            },
+            error: function (xhr, errmsg, err) {}
+        });
+    })
+
+    // Thing updating.
+    $(document).on('click', '.update-button', function (e) {
+        e.preventDefault();
+        var thing_id = $(this).data('index');
+        $.ajax({
+            type: 'POST',
+            url: '{% url "basket:basket_update" %}',
+            data: {
+                item_id: $(this).data('index'),
+                item_quantity: $('#select' + thing_id + ' option:selected').text(),
+                csrfmiddlewaretoken: "{{ csrf_token }}",
+                action: 'post'
+            },
+            success: function (json) {
+                document.getElementById("basket-quantity").innerHTML = json.quantity
+                document.getElementById("subtotal").innerHTML = json.subtotal
+            },
+            error: function (xhr, errmsg, err) {}
+        });
+    })
+</script>
+
+{% endblock content %}

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}CD Collection Sale{% endblock title %}</title>
+    <title>{% block title %}CD Collection Shop{% endblock title %}</title>
     {% bootstrap_css %}
     <link rel="stylesheet" text="style/css" href="{% get_static_prefix %}main/style.css">
     {% bootstrap_javascript jquery='min' %}
@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-link" type="button" role="button" href="#">
+                <a class="btn btn-link" type="button" role="button" href="{% url 'basket:basket_summary' %}">
                     {% with total_quantity=basket|length %}
                         <div id="basket-quantity" class="d-inline-flex">
                             {% if total_quantity > 0 %}
