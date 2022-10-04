@@ -13,7 +13,7 @@
         </div>
         <div>
             <h3>
-                {{ artist }}
+                {{ artist }} ({{ artist.country }})
             </h3>
         </div>
         <div>
@@ -36,7 +36,7 @@
                                 style="width: 350px;" alt="{{ item }}" title="{{ album }}">
                             </a>
                             <h5>
-                                {{ item }} ({{ item.year }}, {{ item.labels }})
+                                {{ item }} ({{ item.year }}, {{ item.get_labels }})
                             </h5>
                         </div>
                     </div>

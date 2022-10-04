@@ -14,7 +14,7 @@
         </div>
         <div>
             <h6>
-                {{ album.artists.all|join:', ' }} — {{ album }} ({{ album.year }}, {{ album.labels }})
+                {{ album.artists.all|join:', ' }} — {{ album }} ({{ album.year }}, {{ album.get_labels }})
             </h6>
         </div>
     </div>

@@ -32,7 +32,7 @@
                                 {{ album.artists.all|join:', ' }} — {{ album }}
                             </strong>
                             <small class="text-muted">
-                                ({{ album.year }}, {{album.item_type}}, {{ album.labels }})
+                                ({{ album.year }}, {{album.item_type}}, {{ album.get_labels }})
                             </small>
                         </div> 
                     </div>

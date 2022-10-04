@@ -1,7 +1,4 @@
-from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, render
-from django.template import TemplateDoesNotExist
-from django.template.loader import get_template
 from .models import Artist, Item
 
 
