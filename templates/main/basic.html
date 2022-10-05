@@ -25,8 +25,8 @@
     <div class="row justify-content-between">
         <div>
             {% if user.is_authenticated %}
-                <p class="text-right font-italic">
-                    Вы вошли как {{ user.username }}
+                <p class="pl-3 font-italic">
+                    Вы вошли как {{ user.user_name }}
                 </p>
         {% endif %}
         </div>
