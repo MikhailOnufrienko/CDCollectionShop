@@ -24,7 +24,7 @@ def add(request):
 
             for item in basket:
                 OrderItem.objects.create(
-                    order_id=order_id, product=item['product'], price=item['price'], quantity=item['qty']
+                    order_id=order_id, product=item['item'], price=item['price'], quantity=item['quantity']
                 )
 
         response = JsonResponse({'success': 'Return something'})
