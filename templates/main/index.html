@@ -41,21 +41,6 @@
                             <div class="p-2 font-weight-bold">
                                 &#8381;{{ album.price }}
                             </div>
-                            <div>
-                                <label for="select" class="my-2 d-inline-block align-middle">
-                                    Кол-во:
-                                </label>
-                                <select class="select d-inline-block align-middle">
-                                    {% for i in album.get_quantity %}
-                                        <option value="{{ i }}">
-                                            {{ i }}
-                                        </option>
-                                    {% endfor %}
-                                </select>  
-                            </div>
-                            <button type="button" class="add-button btn btn-secondary btn-sm" value="{{ album.id }}">
-                                В корзину
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -67,25 +52,5 @@
             {% endif %}
         </div>
     </div>
-
-    <script>
-        $(document).on('click', '.add-button', function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '#',
-                data: {
-                    item_id: $('.add-button').val(),
-                    item_quantity: $('.select option:selected').text(),
-                    csrfmiddlewaretoken: "{{ csrf_token }}",
-                    action: 'post'
-                },
-                success: function (json) {
-                    document.getElementById("basket-quantity").innerHTML = json.quantity
-                },
-                error: function (xhr, errmsg, err) {}
-            });
-        })
-    </script>
 
 {% endblock content %}
