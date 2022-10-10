@@ -1,4 +1,5 @@
 import json
+import os
 
 import stripe
 from django.contrib.auth.decorators import login_required
@@ -6,9 +7,13 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
+from dotenv import load_dotenv
 
 from basket.basket import Basket
 from order.views import payment_confirmation
+
+
+load_dotenv()
 
 
 def order_placed(request):
@@ -29,7 +34,7 @@ def BasketView(request):
     total = total.replace('.', '')
     total = int(total)
 
-    stripe.api_key = 'sk_test_51Lhu6bDa1vyXZ3J1PjsBdytWQJtV6Jm2jB8iXBbspKpFw6FzoDoL4aKJoQ2eX1iod4zRafd1UkCRv2te1qPElZn4009nku6aRb'
+    stripe.api_key = str(os.getenv('STRIPE_SEC_KEY'))
     intent = stripe.PaymentIntent.create(
         amount=total,
         currency='rub',
