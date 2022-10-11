@@ -16,8 +16,8 @@
 
     <header class="mb-4">
         <h1 class="display-1 text-center">
-            <a class="text-decoration-none" style="color:aliceblue"; href="{% url 'main:index' %}">
-                CD Collection Sale
+            <a class="text-decoration-none" style="color:aliceblue" href="{% url 'main:index' %}">
+                CD Collection Shop
             </a>
         </h1>
     </header>
@@ -42,6 +42,46 @@
 
     <div class="row">
         <ul class="col nav justify-content-end border">
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown toggle" data-toggle="dropdown"
+                role="button" aria-haspopup="true" aria-expanded="false">
+                Профиль
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'account:dashboard' %}">
+                        Мои данные
+                    </a>
+                    <a class="dropdown-item" href="{% url 'account:edit_details' %}">
+                        Изменить данные
+                    </a>
+                    <a class="dropdown-item" href="{% url 'account:pwdreset' %}">
+                        Изменить пароль
+                    </a>
+                    <div class="dropdown-divider">
+                    </div>
+                    <a class="dropdown-item" href="{% url 'account:logout' %}">
+                        Выйти
+                    </a>
+                    <div class="dropdown-divider">
+                    </div>
+                    <a class="dropdown-item" href="{% url 'account:delete_user' %}">
+                        Удалить
+                    </a>
+                </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account:login' %}">
+                    Вход
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account:register' %}">
+                    Регистрация
+                </a>
+            </li>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'other' 'about' %}">
                     О сайте
@@ -63,46 +103,6 @@
                     </svg>
                 </a>
             </li>
-            {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown toggle" data-toggle="dropdown"
-                    role="button" aria-haspopup="true" aria-expanded="false">
-                    Профиль
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'account:dashboard' %}">
-                            Мои данные
-                        </a>
-                        <a class="dropdown-item" href="{% url 'account:edit_details' %}">
-                            Изменить данные
-                        </a>
-                        <a class="dropdown-item" href="{% url 'account:pwdreset' %}">
-                            Изменить пароль
-                        </a>
-                        <div class="dropdown-divider">
-                        </div>
-                        <a class="dropdown-item" href="{% url 'account:logout' %}">
-                            Выйти
-                        </a>
-                        <div class="dropdown-divider">
-                        </div>
-                        <a class="dropdown-item" href="{% url 'account:delete_user' %}">
-                            Удалить
-                        </a>
-                    </div>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account:login' %}">
-                        Вход
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account:register' %}">
-                        Регистрация
-                    </a>
-                </li>
-            {% endif %}
         </ul>
     </div>
 
