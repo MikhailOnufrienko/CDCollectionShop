@@ -17,7 +17,7 @@
     <header class="mb-4">
         <h1 class="display-1 text-center">
             <a class="text-decoration-none" style="color:aliceblue" href="{% url 'main:index' %}">
-                CD Collection Shop
+                CD Collection Sale
             </a>
         </h1>
     </header>
@@ -114,7 +114,7 @@
             <div class="list-group list-group-flush">
                 {% for artist in artist_list %}
                     <a href="{% url 'main:artist_detail' artist.pk artist.slug %}"
-                    class="list-group-item list-group-item-action">
+                    class="list-group-item list-group-item-action py-1">
                         {{ artist|upper }}
                     </a>
                 {% endfor %}
