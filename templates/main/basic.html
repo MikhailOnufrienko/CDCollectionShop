@@ -12,102 +12,101 @@
     {% bootstrap_javascript jquery='min' %}
 </head>
 
-<body class="container-fluid">
+<body class="container-fluid pl-0">
 
     <header class="mb-4">
         <h1 class="display-1 text-center">
-            <a class="text-decoration-none" style="color:aliceblue" href="{% url 'main:index' %}">
-                CD Collection Sale
+            <a class="text-decoration-none" style="color:white" href="{% url 'main:index' %}">
+                CD Collection Shop
             </a>
         </h1>
     </header>
 
-    <div class="row justify-content-between">
+    <div class="d-flex ml-3 justify-content-md-between">
         <div>
             {% if user.is_authenticated %}
-                <p class="pl-3 font-italic">
+                <p class="font-italic">
                     Вы вошли как {{ user.user_name }}
                 </p>
-        {% endif %}
+            {% endif %}
         </div>
         <div>
-            <form class="form-inline mt-0 mt-md-0">
-                <input class="form-control mr-sm-1" type="text" placeholder="Введите название..." aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
+            <form class="form-inline mt-md-0" action="{% url 'main:search' %}" method="get">
+                <input class="form-control mr-sm-1" style="width: 400px;" type="search" placeholder="Введите название исполнителя или альбома..." name="search_input" aria-label="Search">
+                <button class="btn btn-outline-info ml-2 my-sm-0" type="submit">
                     Найти
                 </button>
             </form>
         </div>
-    </div>
-
-    <div class="row">
-        <ul class="col nav justify-content-end border">
-            {% if user.is_authenticated %}
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown toggle" data-toggle="dropdown"
-                role="button" aria-haspopup="true" aria-expanded="false">
-                Профиль
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{% url 'account:dashboard' %}">
-                        Мои данные
+        <div>
+            <ul class="col nav">
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown toggle" data-toggle="dropdown"
+                    role="button" aria-haspopup="true" aria-expanded="false">
+                    Профиль
                     </a>
-                    <a class="dropdown-item" href="{% url 'account:edit_details' %}">
-                        Изменить данные
-                    </a>
-                    <a class="dropdown-item" href="{% url 'account:pwdreset' %}">
-                        Изменить пароль
-                    </a>
-                    <div class="dropdown-divider">
-                    </div>
-                    <a class="dropdown-item" href="{% url 'account:logout' %}">
-                        Выйти
-                    </a>
-                    <div class="dropdown-divider">
-                    </div>
-                    <a class="dropdown-item" href="{% url 'account:delete_user' %}">
-                        Удалить
-                    </a>
-                </div>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:login' %}">
-                    Вход
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:register' %}">
-                    Регистрация
-                </a>
-            </li>
-            {% endif %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'other' 'about' %}">
-                    О сайте
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-link" type="button" role="button" href="{% url 'basket:basket_summary' %}">
-                    {% with total_quantity=basket|length %}
-                        <div id="basket-quantity" class="d-inline-flex">
-                            {% if total_quantity > 0 %}
-                                {{ total_quantity }}
-                            {% else %}
-                                0
-                            {% endif %}
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'account:dashboard' %}">
+                            Мои данные
+                        </a>
+                        <a class="dropdown-item" href="{% url 'account:edit_details' %}">
+                            Изменить данные
+                        </a>
+                        <a class="dropdown-item" href="{% url 'account:pwdreset' %}">
+                            Изменить пароль
+                        </a>
+                        <div class="dropdown-divider">
                         </div>
-                    {% endwith %}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
-                        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
-                    </svg>
-                </a>
-            </li>
-        </ul>
+                        <a class="dropdown-item" href="{% url 'account:logout' %}">
+                            Выйти
+                        </a>
+                        <div class="dropdown-divider">
+                        </div>
+                        <a class="dropdown-item" href="{% url 'account:delete_user' %}">
+                            Удалить
+                        </a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:login' %}">
+                        Вход
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:register' %}">
+                        Регистрация
+                    </a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'other' 'about' %}">
+                        О сайте
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-link" type="button" role="button" href="{% url 'basket:basket_summary' %}">
+                        {% with total_quantity=basket|length %}
+                            <div id="basket-quantity" class="d-inline-flex">
+                                {% if total_quantity > 0 %}
+                                    {{ total_quantity }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            </div>
+                        {% endwith %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                            <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="row">
-        <nav class="col-md-3 nav flex-column border">
+        <nav class="col-md-3 nav flex-column pl-3">
             <span class="nav-link root font-weight-bold">
                 Исполнители
             </span>

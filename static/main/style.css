@@ -1,5 +1,11 @@
+body {
+    margin: 0;
+  }
+
 header {
-    background: url("header-bg.jpg") center / auto 100% round;
+    background-color: black;
+    position: relative;
+    width: 100%;
 }
 
 .root {

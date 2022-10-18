@@ -5,7 +5,7 @@ from django.test import Client, TestCase
 from django.urls import reverse
 
 from main.models import Artist, Item, ItemStyle, ItemType, Label
-from main.views import index
+from main.views import index, search
 
 
 class TestViewResponse(TestCase):
@@ -58,6 +58,13 @@ class TestViewResponse(TestCase):
         self.assertIn('<title>CD Collection Shop</title>', html)
         self.assertTrue(html.startswith('\n\n\n<!DOCTYPE html>\n'))
         self.assertEqual(response.status_code, 200)
+
+    def test_search(self):
+        """
+        Tests if the search view returns the relevant result.
+        :return:
+        """
+
 
     def test_404_page_not_found(self):
         """

@@ -1,0 +1,43 @@
+{% extends './basic.html' %}
+
+{% load static %}
+
+{% block title %}
+CD Collection Shop | Search result
+{% endblock %}
+
+{% block content %}
+
+<h2>
+    Найдено:
+</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        {% for album in search_results %}
+        <div class="col-md-4 d-flex">
+            <div class="card flex-fill mb-3" style="width: 300px;">
+                <a href="{% url 'main:item_detail' album.pk album.slug %}" class="stretched-link">
+                    <img class="card-img-top" src="{% get_static_prefix %}main/covers/{{ album.pk }}.jpg"
+                    alt="{{ album.artists.all|join:', ' }} — {{ album }}"
+                    title="{{ album.artists.all|join:', ' }} — {{ album }}">
+                </a>
+                <div class="card-body bg-light pb-1">
+                    <div class="card-title text-center bg-light">
+                        <h6>
+                            {{ album.artists.all|join:', ' }} — {{ album }} ({{ album.year }}, {{ album.get_labels}})
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>
+            Не найдено результатов.<br>
+            Попробуйте поискать что-нибудь другое.
+        </p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

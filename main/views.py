@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
 from django.template.loader import get_template
 from django.template import TemplateDoesNotExist
@@ -21,6 +22,30 @@ def item_detail(request, pk, item_slug):
     return render(request,
                   'main/item_detail.html',
                   context={'album': album})
+
+
+def search(request):
+    """Return the result of search.
+
+    The result of search is an item, which has
+    an artist or an album name matching the search input.
+    :param request
+    :return:
+    """
+    search_results = []
+    search_query = request.GET.get('search_input')
+    if search_query:
+        search_results = Item.objects.filter(
+            Q(
+                artists__name__icontains=search_query
+            ) | Q(
+                album__icontains=search_query
+            )
+        )
+    context = {
+        'search_results': search_results
+    }
+    return render(request, 'main/search_result.html', context)
 
 
 def other_pages(request, page):

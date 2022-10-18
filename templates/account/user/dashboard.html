@@ -3,19 +3,19 @@
 {% load static %}
 
 {% block title %}
-  Состав корзины
-{%endblock %}
+  Dashboard
+{% endblock %}
 
 {% block content %}
 
 <main class="pt-5">
   <div class="container" style="max-width: 1000px">
     <div class="col-12">
-      <h1 class="h2">Ваша панель управления</h1>
+      <h1 class="h2">Your Dashboard</h1>
     </div>
     <div class="col-12 d-flex justify-content-between">
-      <div>Управляйте своими <b>заказами</b> и личными данными</div>
-      <div><a href="{% url 'account:edit_details' %}">Изменить данные</a></div>
+      <div>Here you can get a grip on your <b>orders</b> and personal data.</div>
+      <div><a href="{% url 'account:edit_details' %}">Change personal data</a></div>
     </div>
     <hr />
   </div>
