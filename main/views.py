@@ -27,10 +27,8 @@ def item_detail(request, pk, item_slug):
 def search(request):
     """Return the result of search.
 
-    The result of search is an item, which has
+    The result of search is an item or items, which has/have
     an artist or an album name matching the search input.
-    :param request
-    :return:
     """
     search_results = []
     search_query = request.GET.get('search_input')
@@ -41,9 +39,13 @@ def search(request):
             ) | Q(
                 album__icontains=search_query
             )
-        )
+        ).order_by('artists', 'album')
+    search_results_unique = []
+    for search_item in search_results:
+        if search_item not in search_results_unique:
+            search_results_unique.append(search_item)
     context = {
-        'search_results': search_results
+        'search_results': search_results_unique
     }
     return render(request, 'main/search_result.html', context)
 
