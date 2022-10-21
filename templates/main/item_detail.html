@@ -6,37 +6,46 @@
 
 {% block content %}
 
-    <div>
-        <div>
-            <img src="{% get_static_prefix %}main/covers/{{ album.pk }}.jpg"
-            style="width: 300px;" alt="{{ album.artists.all|join:', ' }} — {{ album }}"
-            title="{{ album.artists.all|join:', ' }} — {{ album }}">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 d-flex">
+            <div class="card flex-fill" style="width: 300px;">
+                <img class="card-img-top" src="{% get_static_prefix %}main/covers/{{ album.pk }}.jpg"
+                alt="{{ album.artists.all|join:', ' }} — {{ album }}" title="{{ album.artists.all|join:', ' }} — {{ album }}">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h6 class="text-center">
+                            {{ album.artists.all|join:', ' }} — {{ album }} ({{ album.year }}, {{ album.get_labels }})
+                        </h6>
+                    </div>
+                    <div class="d-flex justify-content-around p-2">
+                        <div class="font-weight-bold">
+                            &#8381;{{ album.price }}
+                        </div>
+                        <div class="font-weight-bold">
+                            <label for="select">
+                                Кол-во:
+                            </label>
+                            <select id="select" class="mb-1">
+                                {% for i in album.get_quantity %}
+                                    <option value="{{ i }}">
+                                        {{ i }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="button" id="add-button" value="{{ album.id }}" class="btn btn-secondary btn-sm">
+                            В корзину
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <h6>
-                {{ album.artists.all|join:', ' }} — {{ album }} ({{ album.year }}, {{ album.get_labels }})
-            </h6>
-        </div>
     </div>
-
-    <div class="p-2">
-        &#8381;{{ album.price }}
-    </div>
-    <div>
-        <label for="select">
-            Кол-во
-        </label>
-        <select id="select">
-            {% for i in album.get_quantity %}
-                <option value="{{ i }}">
-                    {{ i }}
-                </option>
-            {% endfor %}
-        </select>
-        <button type="button" id="add-button" value="{{ album.id }}" class="btn btn-secondary btn-sm">
-            В корзину
-        </button>
-    </div>
+</div>
+    
 
     <script>
         $(document).on('click', '#add-button', function (e) {
