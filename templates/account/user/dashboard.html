@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-  Dashboard
+  Панель управления
 {% endblock %}
 
 {% block content %}
@@ -11,11 +11,11 @@
 <main class="pt-5">
   <div class="container" style="max-width: 1000px">
     <div class="col-12">
-      <h1 class="h2">Your Dashboard</h1>
+      <h1 class="h2">Панель управления</h1>
     </div>
     <div class="col-12 d-flex justify-content-between">
-      <div>Here you can get a grip on your <b>orders</b> and personal data.</div>
-      <div><a href="{% url 'account:edit_details' %}">Change personal data</a></div>
+      <div>Управляйте своими <b>заказами</b> и личными данными.</div>
+      <div><a href="{% url 'account:edit_details' %}">Изменить личные данные</a></div>
     </div>
     <hr />
   </div>

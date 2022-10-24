@@ -38,10 +38,10 @@
                                 {% endif %}
 
                                 <label>{{ form.user_name.label }}<span class="text-muted small">
-                                        (Required)</span></label>
+                                        (Обязательное поле)</span></label>
                                 {{ form.user_name }}
                                 <label>{{ form.email.label}}<span class="text-muted small">
-                                        (Required)</span></label>
+                                        (Обязательное поле)</span></label>
                                 {{ form.email }}
                                 <label>{{ form.password.label}}<span class="text-muted mb-4">
                                         </span></label>
@@ -50,9 +50,9 @@
                                 </small>
                                 {{ form.password }}
                                 <label>{{ form.password2.label}}<span class="text-muted small">
-                                        (Required)</span></label>
+                                        (Обязательное поле)</span></label>
                                 {{ form.password2 }}
-                                <button class="btn btn-primary btn-block py-2 mb-4 mt-5 fw500 w-100" type="submit">Register</button>
+                                <button class="btn btn-primary btn-block py-2 mb-4 mt-5 fw500 w-100" type="submit">Зарегистрироваться</button>
                                 <p class="text-center">
                                     <a href="{% url 'account:login' %}">Уже есть учётная запись?</a>
                                 </p>

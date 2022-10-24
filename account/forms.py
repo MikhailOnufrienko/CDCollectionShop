@@ -24,10 +24,10 @@ class UserLoginForm(AuthenticationForm):
 class RegistrationForm(forms.ModelForm):
 
     user_name = forms.CharField(
-        label='Enter Username', min_length=4, max_length=50, help_text='Required')
+        label='Введите имя', min_length=4, max_length=50, help_text='Required')
     email = forms.EmailField(max_length=100, help_text='Required', error_messages={
         'required': 'Введите, пожалуйста, вашу электронную почту.'})
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(
         label='Введите пароль ещё раз', widget=forms.PasswordInput)
 
@@ -58,13 +58,13 @@ class RegistrationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['user_name'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'Username'})
+            {'class': 'form-control mb-3', 'placeholder': 'Имя'})
         self.fields['email'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'E-mail', 'name': 'email', 'id': 'id_email'})
+            {'class': 'form-control mb-3', 'placeholder': 'Электронная почта', 'name': 'email', 'id': 'id_email'})
         self.fields['password'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'Password'})
+            {'class': 'form-control mb-3', 'placeholder': 'Пароль'})
         self.fields['password2'].widget.attrs.update(
-            {'class': 'form-control', 'placeholder': 'Repeat Password'})
+            {'class': 'form-control', 'placeholder': 'Повторите пароль'})
 
 
 class PwdResetForm(PasswordResetForm):
@@ -93,17 +93,17 @@ class PwdResetConfirmForm(SetPasswordForm):
 class UserEditForm(forms.ModelForm):
 
     email = forms.EmailField(
-        label='Account email (can not be changed)', max_length=200, widget=forms.TextInput(
+        label='Электронная почта (нельзя изменить)', max_length=200, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', 'readonly': 'readonly'}))
 
     user_name = forms.CharField(
-        label='Firstname', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-firstname',
+        label='Имя пользователя', min_length=4, max_length=50, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Имя', 'id': 'form-firstname',
                    'readonly': 'readonly'}))
 
     first_name = forms.CharField(
-        label='Username', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Firstname', 'id': 'form-lastname'}))
+        label='Имя пользователя', min_length=4, max_length=50, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Имя', 'id': 'form-lastname'}))
 
     class Meta:
         model = UserBase

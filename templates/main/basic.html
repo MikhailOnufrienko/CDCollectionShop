@@ -14,7 +14,7 @@
 
 <body class="container-fluid pl-0">
 
-    <header class="mb-4">
+    <header class="mb-2">
         <h1 class="display-1 text-center">
             <a class="text-decoration-none" style="color:white" href="{% url 'main:index' %}">
                 CD Collection Shop
@@ -22,15 +22,15 @@
         </h1>
     </header>
 
-    <div class="d-flex ml-3 justify-content-md-between">
-        <div>
+    <div class="row mb-2">
+        <div class="col-md-3 d-flex justify-content-start">
             {% if user.is_authenticated %}
-                <p class="font-italic">
+                <p class="font-italic pt-3 pl-3">
                     Вы вошли как {{ user.user_name }}
                 </p>
             {% endif %}
         </div>
-        <div>
+        <div class="col-md-6 d-flex justify-content-center">
             <form class="form-inline mt-md-0" action="{% url 'main:search' %}" method="get">
                 <input class="form-control mr-sm-1" style="width: 400px;" type="search" placeholder="Введите название исполнителя или альбома..." name="search_input" aria-label="Search">
                 <button class="btn btn-outline-info ml-2 my-sm-0" type="submit">
@@ -38,11 +38,11 @@
                 </button>
             </form>
         </div>
-        <div>
-            <ul class="col nav">
+        <div class="col-md-3 d-flex justify-content-end">
+            <ul class="nav">
                 {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown toggle" data-toggle="dropdown"
+                <li class="nav-item dropdown m-2">
+                    <a class="nav-link dropdown toggle px-0" data-toggle="dropdown"
                     role="button" aria-haspopup="true" aria-expanded="false">
                     Профиль
                     </a>
@@ -69,24 +69,24 @@
                     </div>
                 </li>
                 {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account:login' %}">
+                <li class="nav-item m-2">
+                    <a class="nav-link px-0" href="{% url 'account:login' %}">
                         Вход
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account:register' %}">
+                <li class="nav-item m-2">
+                    <a class="nav-link px-0" href="{% url 'account:register' %}">
                         Регистрация
                     </a>
                 </li>
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'other' 'about' %}">
+                <li class="nav-item m-2">
+                    <a class="nav-link px-0" href="{% url 'other' 'about' %}">
                         О сайте
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="btn btn-link" type="button" role="button" href="{% url 'basket:basket_summary' %}">
+                <li class="nav-item m-2">
+                    <a class="btn btn-link px-0" type="button" role="button" href="{% url 'basket:basket_summary' %}">
                         {% with total_quantity=basket|length %}
                             <div id="basket-quantity" class="d-inline-flex">
                                 {% if total_quantity > 0 %}
