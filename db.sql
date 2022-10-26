@@ -24,27 +24,28 @@ DROP TABLE IF EXISTS `account_userbase`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account_userbase` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `last_login` datetime(6) DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
-  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `first_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `about` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_number` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `postcode` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address_line_1` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address_line_2` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `town_city` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `user_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `first_name` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `country` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `phone_number` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `postcode` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `address_line_1` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `address_line_2` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `town_city` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `is_staff` tinyint(1) NOT NULL,
   `created` datetime(6) NOT NULL,
   `updated` datetime(6) NOT NULL,
+  `last_name` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +54,7 @@ CREATE TABLE `account_userbase` (
 
 LOCK TABLES `account_userbase` WRITE;
 /*!40000 ALTER TABLE `account_userbase` DISABLE KEYS */;
-INSERT INTO `account_userbase` VALUES (1,'pbkdf2_sha256$390000$fc1t7mV6QpK95PvfgUWlpv$qiHt5ycqBpE+VOIFsk3fmX4cYJNB/L5a+B6iprl3gbQ=','2022-10-05 09:38:23.908096',1,'ghastfloripa@gmail.com','Mikhail','Михаил','Создатель.','RU','+79044209968','403071','Volgograd','Volgograd','Volgograd',0,1,'2022-10-05 08:03:28.440361','2022-10-05 14:03:31.303911'),(2,'pbkdf2_sha256$390000$dP8N4CmIZkflFbF5e0PRGQ$ChjjNkXKfNxVCteLRCE8xej/O6TDfKDnIAR+X7tgT4o=',NULL,0,'user1@localhost','user1','','','','','','','','',0,0,'2022-10-05 09:35:58.313926','2022-10-05 09:35:58.313926'),(3,'pbkdf2_sha256$390000$FuXDuo0hlq6wRb8H4L5lYL$WWlvQAl6hz1Q8vyzeW1lVR7IfXSpazt7sqQ/RYPo//M=',NULL,0,'ghast2@localhost','ghast2','','','','','','','','',0,0,'2022-10-05 14:05:36.365760','2022-10-05 14:05:36.365760'),(4,'pbkdf2_sha256$390000$jNdEAX8ZOFJC2IsLtesfxP$rkLfcaWAtLGtuk4FoTjl16su0cv5yIlDQdYFoaG9zag=','2022-10-05 14:08:53.507719',1,'ghast13@yandex.ru','Michael','','','','','','','','',1,1,'2022-10-05 14:08:25.368954','2022-10-05 14:08:25.368954');
+INSERT INTO `account_userbase` VALUES (1,'pbkdf2_sha256$390000$oF0GdEDfkWAoq5p95DVW7C$durHI7cReAGLeDl3xLvQFZiXwN9MDIagw7D1mNEw0qw=','2022-10-05 09:38:23.908096',1,'ghastfloripa@gmail.com','Mikhail','Михаил','Создатель.','RU','+79044209968','403071','Volgograd','Volgograd','Volgograd',0,1,'2022-10-05 08:03:28.440361','2022-10-26 14:31:48.976891',NULL),(2,'pbkdf2_sha256$390000$dP8N4CmIZkflFbF5e0PRGQ$ChjjNkXKfNxVCteLRCE8xej/O6TDfKDnIAR+X7tgT4o=',NULL,0,'user1@localhost','user1','','','','','','','','',0,0,'2022-10-05 09:35:58.313926','2022-10-05 09:35:58.313926',NULL),(3,'pbkdf2_sha256$390000$FuXDuo0hlq6wRb8H4L5lYL$WWlvQAl6hz1Q8vyzeW1lVR7IfXSpazt7sqQ/RYPo//M=',NULL,0,'ghast2@localhost','ghast2','','','','','','','','',0,0,'2022-10-05 14:05:36.365760','2022-10-05 14:05:36.365760',NULL),(4,'pbkdf2_sha256$390000$jNdEAX8ZOFJC2IsLtesfxP$rkLfcaWAtLGtuk4FoTjl16su0cv5yIlDQdYFoaG9zag=','2022-10-24 07:51:55.282491',1,'ghast13@yandex.ru','GGhast','Михаил','','','','','','','',0,1,'2022-10-05 14:08:25.368954','2022-10-26 13:55:41.213164','Онуфриенко'),(5,'pbkdf2_sha256$390000$i1XXQUY1palak84XjBDuyC$CzT9utlw2KtpcqIHNJUT4aIwybtnyzrfJsM48Nxbo7w=',NULL,0,'sidorov@localhost','sidorov','','','','','','','','',0,0,'2022-10-08 10:15:46.284221','2022-10-08 10:15:46.284221',NULL);
 /*!40000 ALTER TABLE `account_userbase` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +102,7 @@ CREATE TABLE `account_userbase_user_permissions` (
   KEY `account_userbase_use_permission_id_b5924313_fk_auth_perm` (`permission_id`),
   CONSTRAINT `account_userbase_use_permission_id_b5924313_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   CONSTRAINT `account_userbase_use_userbase_id_0f22cb9e_fk_account_u` FOREIGN KEY (`userbase_id`) REFERENCES `account_userbase` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +126,7 @@ CREATE TABLE `auth_group` (
   `name` varchar(150) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +154,7 @@ CREATE TABLE `auth_group_permissions` (
   KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`),
   CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +181,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,7 +215,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +244,7 @@ CREATE TABLE `auth_user_groups` (
   KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`),
   CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
   CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,7 +272,7 @@ CREATE TABLE `auth_user_user_permissions` (
   KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`),
   CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,7 +306,7 @@ CREATE TABLE `django_admin_log` (
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
   CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -331,7 +332,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -357,7 +358,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -366,7 +367,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2022-10-04 08:25:57.863996'),(2,'auth','0001_initial','2022-10-04 08:25:59.269308'),(3,'admin','0001_initial','2022-10-04 08:25:59.562896'),(4,'admin','0002_logentry_remove_auto_add','2022-10-04 08:25:59.581844'),(5,'admin','0003_logentry_add_action_flag_choices','2022-10-04 08:25:59.604785'),(6,'contenttypes','0002_remove_content_type_name','2022-10-04 08:25:59.857600'),(7,'auth','0002_alter_permission_name_max_length','2022-10-04 08:25:59.982051'),(8,'auth','0003_alter_user_email_max_length','2022-10-04 08:26:00.053857'),(9,'auth','0004_alter_user_username_opts','2022-10-04 08:26:00.067820'),(10,'auth','0005_alter_user_last_login_null','2022-10-04 08:26:00.162839'),(11,'auth','0006_require_contenttypes_0002','2022-10-04 08:26:00.168826'),(12,'auth','0007_alter_validators_add_error_messages','2022-10-04 08:26:00.183785'),(13,'auth','0008_alter_user_username_max_length','2022-10-04 08:26:00.307608'),(14,'auth','0009_alter_user_last_name_max_length','2022-10-04 08:26:00.420116'),(15,'auth','0010_alter_group_name_max_length','2022-10-04 08:26:00.455895'),(16,'auth','0011_update_proxy_permissions','2022-10-04 08:26:00.471851'),(17,'auth','0012_alter_user_first_name_max_length','2022-10-04 08:26:00.584914'),(18,'main','0001_initial','2022-10-04 08:26:01.534130'),(19,'sessions','0001_initial','2022-10-04 08:26:01.589981'),(21,'account','0001_initial','2022-10-05 08:00:03.691181'),(22,'order','0001_initial','2022-10-05 14:43:33.194744');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2022-10-04 08:25:57.863996'),(2,'auth','0001_initial','2022-10-04 08:25:59.269308'),(3,'admin','0001_initial','2022-10-04 08:25:59.562896'),(4,'admin','0002_logentry_remove_auto_add','2022-10-04 08:25:59.581844'),(5,'admin','0003_logentry_add_action_flag_choices','2022-10-04 08:25:59.604785'),(6,'contenttypes','0002_remove_content_type_name','2022-10-04 08:25:59.857600'),(7,'auth','0002_alter_permission_name_max_length','2022-10-04 08:25:59.982051'),(8,'auth','0003_alter_user_email_max_length','2022-10-04 08:26:00.053857'),(9,'auth','0004_alter_user_username_opts','2022-10-04 08:26:00.067820'),(10,'auth','0005_alter_user_last_login_null','2022-10-04 08:26:00.162839'),(11,'auth','0006_require_contenttypes_0002','2022-10-04 08:26:00.168826'),(12,'auth','0007_alter_validators_add_error_messages','2022-10-04 08:26:00.183785'),(13,'auth','0008_alter_user_username_max_length','2022-10-04 08:26:00.307608'),(14,'auth','0009_alter_user_last_name_max_length','2022-10-04 08:26:00.420116'),(15,'auth','0010_alter_group_name_max_length','2022-10-04 08:26:00.455895'),(16,'auth','0011_update_proxy_permissions','2022-10-04 08:26:00.471851'),(17,'auth','0012_alter_user_first_name_max_length','2022-10-04 08:26:00.584914'),(18,'main','0001_initial','2022-10-04 08:26:01.534130'),(19,'sessions','0001_initial','2022-10-04 08:26:01.589981'),(21,'account','0001_initial','2022-10-05 08:00:03.691181'),(22,'order','0001_initial','2022-10-05 14:43:33.194744'),(23,'account','0002_userbase_last_name_alter_userbase_first_name','2022-10-26 09:05:57.215278');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,7 +384,7 @@ CREATE TABLE `django_session` (
   `expire_date` datetime(6) NOT NULL,
   PRIMARY KEY (`session_key`),
   KEY `django_session_expire_date_a5c62663` (`expire_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -392,7 +393,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('a9exdmhp79lyj6v40fgbvh701hbd1guf','eyJiYXNrZXQiOnt9fQ:1ogQFS:2OIEapWSMz1wQ3gn2OIoNw7yo0s_HtIVN60MnGXEq0M','2022-10-20 12:45:10.298060'),('rw5xgha3qhz3t3zs5wvnvzd10dowbyom','.eJxtj7uOwyAQRf-FOkJm_MCkTJ9vsAZmWLOOcGJwsYr874ujFLF2mynmnnul8xSJUwpzHCb-EeengHq_9yU4FmehTCVNJU7isWLMIRdEbdtJDLjmcVgTL0OgwjXi8LPoJo57QN8Yv2bp5piXYOWOyHea5HUmvl3e7GFgxDSWdk-MtfOokVpXo2awXjU9eXBas66UskZ74A48gicyhjsL5LBp-04pLKMW08T5ZaY_zaD6Y1YXMWgP-l37j_72C3-GYm8:1ogQ20:Vu_DUNTxX-AfYCBAB45SubAgPIN_P2i27qH0qAg17AY','2022-10-20 12:31:16.737366');
+INSERT INTO `django_session` VALUES ('rw5xgha3qhz3t3zs5wvnvzd10dowbyom','.eJxtj7uOwyAQRf-FOkJm_MCkTJ9vsAZmWLOOcGJwsYr874ujFLF2mynmnnul8xSJUwpzHCb-EeengHq_9yU4FmehTCVNJU7isWLMIRdEbdtJDLjmcVgTL0OgwjXi8LPoJo57QN8Yv2bp5piXYOWOyHea5HUmvl3e7GFgxDSWdk-MtfOokVpXo2awXjU9eXBas66UskZ74A48gicyhjsL5LBp-04pLKMW08T5ZaY_zaD6Y1YXMWgP-l37j_72C3-GYm8:1ogQ20:Vu_DUNTxX-AfYCBAB45SubAgPIN_P2i27qH0qAg17AY','2022-10-20 12:31:16.737366'),('s5lmwawx31b1b69i2rm1uu4homyakzdr','eyJiYXNrZXQiOnt9fQ:1ongsf:1okbE3E-_15Fr-mVDSTPG0qvA-KNo7uRrLb_xqBjSFo','2022-11-09 13:55:41.373662'),('ubbvde41vqqe3owwng89409yydkurrg5','.eJxVjDsOgzAQBe-ydWTFBvyhTM8Z0Nq7jgmRLWGoEHdPkGho38y8HTzWmVfo9-MBI25rGrfKyzgR9NDCbfMYZs4noA_mdxGh5HWZvDgVcdEqhkL8fV3u7SBhTf_aEmMTIhqkLjRoWPkoW0tRBWPYPKX0zkTFWkVUkcg51l5RwLazWkqE4wf8oD1C:1okmmG:AjSgDz4_SWOTk_sMHeBcm-o3oEIK9s2Tf3RkZdkpJm4','2022-11-01 13:37:04.705485'),('ut0dpvnuptxwvz9bjy4didvwqhxjduhl','.eJxVjMsOgyAQRf-FdUMKIg-X3fcbyMAMxdpgIrgy_ns1cdFu7zn3bMzD2rJfKy1-RDYwxW6_W4A4UTkBvqG8Zh7n0pYx8FPhF638OSN9Hpf7F8hQ8_G2SNDFBAawjx0YkiEJZTHJaAyZuxDBmSRJywQyITpHOkiMoHqrhYAjGqBO1Niw7fsX5jQ9Qg:1oieSi:8o7fx70oNewpcctyJMWHylpLSTHORVOk5B4v2WCNq4k','2022-10-26 16:20:04.439108'),('xhhskxf5lzesloarg203pnwbo1611zzr','eyJiYXNrZXQiOnt9fQ:1onhWt:861ZMQs8TVJmguCNCzTpOmWuuA2YIUFpXu3HToCooPg','2022-11-09 14:37:15.317981');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -410,7 +411,7 @@ CREATE TABLE `main_artist` (
   `slug` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `main_artist_slug_46d9521c` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -450,7 +451,7 @@ CREATE TABLE `main_item` (
   CONSTRAINT `main_item_item_type_id_7d455b89_fk_main_itemtype_id` FOREIGN KEY (`item_type_id`) REFERENCES `main_itemtype` (`id`),
   CONSTRAINT `main_item_label_id_009a310c_fk_main_label_id` FOREIGN KEY (`label_id`) REFERENCES `main_label` (`id`),
   CONSTRAINT `main_item_licensed_by_id_54399b60_fk_main_label_id` FOREIGN KEY (`licensed_by_id`) REFERENCES `main_label` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -479,7 +480,7 @@ CREATE TABLE `main_item_artists` (
   KEY `main_item_artists_artist_id_66ae0fe1_fk_main_artist_id` (`artist_id`),
   CONSTRAINT `main_item_artists_artist_id_66ae0fe1_fk_main_artist_id` FOREIGN KEY (`artist_id`) REFERENCES `main_artist` (`id`),
   CONSTRAINT `main_item_artists_item_id_3db8819e_fk_main_item_id` FOREIGN KEY (`item_id`) REFERENCES `main_item` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -508,7 +509,7 @@ CREATE TABLE `main_item_styles` (
   KEY `main_item_styles_itemstyle_id_2508d79b_fk_main_itemstyle_id` (`itemstyle_id`),
   CONSTRAINT `main_item_styles_item_id_43333ae1_fk_main_item_id` FOREIGN KEY (`item_id`) REFERENCES `main_item` (`id`),
   CONSTRAINT `main_item_styles_itemstyle_id_2508d79b_fk_main_itemstyle_id` FOREIGN KEY (`itemstyle_id`) REFERENCES `main_itemstyle` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -532,7 +533,7 @@ CREATE TABLE `main_itemstyle` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -556,7 +557,7 @@ CREATE TABLE `main_itemtype` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `format` varchar(16) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -580,7 +581,7 @@ CREATE TABLE `main_label` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -617,7 +618,7 @@ CREATE TABLE `order_order` (
   PRIMARY KEY (`id`),
   KEY `order_order_user_id_7cf9bc2b_fk_account_userbase_id` (`user_id`),
   CONSTRAINT `order_order_user_id_7cf9bc2b_fk_account_userbase_id` FOREIGN KEY (`user_id`) REFERENCES `account_userbase` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -626,7 +627,7 @@ CREATE TABLE `order_order` (
 
 LOCK TABLES `order_order` WRITE;
 /*!40000 ALTER TABLE `order_order` DISABLE KEYS */;
-INSERT INTO `order_order` VALUES (1,'name','add1','add2','','','','2022-10-05 15:19:11.177845','2022-10-05 15:19:11.177845',190.90,'pi_3LpZMrDa1vyXZ3J12GdpopAa_secret_tX3Xy8mrDiThwQdtuxA1WtMsV',0,4),(2,'name','add1','add2','','','','2022-10-05 15:22:07.435730','2022-10-05 15:22:07.435730',190.90,'pi_3LpZPtDa1vyXZ3J13aLGqHrV_secret_27Q0YI1w7iSrQ9zpeDClIwzv1',0,4),(3,'name','add1','add2','','','','2022-10-05 15:26:59.101524','2022-10-05 15:26:59.101524',190.90,'pi_3LpZU4Da1vyXZ3J13cwNXspQ_secret_hwH6HB2rrVgLzotOeAQMbvJlD',0,4),(4,'name','add1','add2','','','','2022-10-05 15:31:40.437626','2022-10-05 15:31:40.437626',190.90,'pi_3LpZZ9Da1vyXZ3J12jTj2JPj_secret_8oNUSlnznSubnbvFV4QTMVYmj',0,4),(5,'name','add1','add2','','','','2022-10-05 15:32:44.760061','2022-10-05 15:32:44.761057',190.90,'pi_3LpZaDDa1vyXZ3J13g0jjLck_secret_PJz4sF7UAW4XOPKyroIeNAZxj',0,4),(6,'name','add1','add2','','','','2022-10-05 15:44:05.063632','2022-10-05 15:44:05.063632',190.90,'pi_3LpZlCDa1vyXZ3J11l64mLtb_secret_YqgNBwedKCux7lRp7Vzgu5HhW',0,4),(7,'name','add1','add2','','','','2022-10-05 16:53:09.983906','2022-10-05 16:53:09.984904',190.90,'pi_3Lpaq1Da1vyXZ3J12KBDO2Sr_secret_rxOIQ4R6HTA9KNaeH3o946G9p',0,4),(8,'name','add1','add2','','','','2022-10-05 16:56:26.003172','2022-10-05 16:56:26.003172',190.90,'pi_3LpatDDa1vyXZ3J1134TxVM7_secret_UexeyKi2cvgcxs4R6rQQWxd7o',0,4),(9,'name','add1','add2','','','','2022-10-06 07:46:53.997483','2022-10-06 07:46:53.997483',190.90,'pi_3LpomYDa1vyXZ3J13s88J2qH_secret_JxkvaarGehhqnrkHMt6LYsfxn',0,4),(10,'name','add1','add2','','','','2022-10-06 07:52:55.340631','2022-10-06 07:52:55.340631',165.90,'pi_3LposjDa1vyXZ3J126daY23A_secret_lBACf7t9bTNBiSf52hKfKEHdK',0,4),(11,'name','add1','add2','','','','2022-10-06 09:14:46.277715','2022-10-06 09:14:46.277715',155.90,'pi_3Lpq9vDa1vyXZ3J120mB1ZcP_secret_DchwfpiHt4Tba9qIvhFG9kajK',0,4);
+INSERT INTO `order_order` VALUES (1,'name','add1','add2','','','','2022-10-05 15:19:11.177845','2022-10-05 15:19:11.177845',190.90,'pi_3LpZMrDa1vyXZ3J12GdpopAa_secret_tX3Xy8mrDiThwQdtuxA1WtMsV',0,4),(2,'name','add1','add2','','','','2022-10-05 15:22:07.435730','2022-10-05 15:22:07.435730',190.90,'pi_3LpZPtDa1vyXZ3J13aLGqHrV_secret_27Q0YI1w7iSrQ9zpeDClIwzv1',0,4),(3,'name','add1','add2','','','','2022-10-05 15:26:59.101524','2022-10-05 15:26:59.101524',190.90,'pi_3LpZU4Da1vyXZ3J13cwNXspQ_secret_hwH6HB2rrVgLzotOeAQMbvJlD',0,4),(4,'name','add1','add2','','','','2022-10-05 15:31:40.437626','2022-10-05 15:31:40.437626',190.90,'pi_3LpZZ9Da1vyXZ3J12jTj2JPj_secret_8oNUSlnznSubnbvFV4QTMVYmj',0,4),(5,'name','add1','add2','','','','2022-10-05 15:32:44.760061','2022-10-05 15:32:44.761057',190.90,'pi_3LpZaDDa1vyXZ3J13g0jjLck_secret_PJz4sF7UAW4XOPKyroIeNAZxj',0,4),(6,'name','add1','add2','','','','2022-10-05 15:44:05.063632','2022-10-05 15:44:05.063632',190.90,'pi_3LpZlCDa1vyXZ3J11l64mLtb_secret_YqgNBwedKCux7lRp7Vzgu5HhW',0,4),(7,'name','add1','add2','','','','2022-10-05 16:53:09.983906','2022-10-05 16:53:09.984904',190.90,'pi_3Lpaq1Da1vyXZ3J12KBDO2Sr_secret_rxOIQ4R6HTA9KNaeH3o946G9p',0,4),(8,'name','add1','add2','','','','2022-10-05 16:56:26.003172','2022-10-05 16:56:26.003172',190.90,'pi_3LpatDDa1vyXZ3J1134TxVM7_secret_UexeyKi2cvgcxs4R6rQQWxd7o',0,4),(9,'name','add1','add2','','','','2022-10-06 07:46:53.997483','2022-10-06 07:46:53.997483',190.90,'pi_3LpomYDa1vyXZ3J13s88J2qH_secret_JxkvaarGehhqnrkHMt6LYsfxn',0,4),(10,'name','add1','add2','','','','2022-10-06 07:52:55.340631','2022-10-06 07:52:55.340631',165.90,'pi_3LposjDa1vyXZ3J126daY23A_secret_lBACf7t9bTNBiSf52hKfKEHdK',0,4),(11,'name','add1','add2','','','','2022-10-06 09:14:46.277715','2022-10-06 09:14:46.277715',155.90,'pi_3Lpq9vDa1vyXZ3J120mB1ZcP_secret_DchwfpiHt4Tba9qIvhFG9kajK',0,4),(12,'name','add1','add2','','','','2022-10-10 13:52:33.864814','2022-10-10 13:52:33.864814',200.90,'pi_3LrMOrDa1vyXZ3J13mIt8Pr9_secret_8kJbXi7o3RIb99zNxrUyDiWkp',0,4),(13,'name','add1','add2','','','','2022-10-10 13:55:07.457778','2022-10-10 13:55:07.457778',321.80,'pi_3LrMRRDa1vyXZ3J121iEccEz_secret_NJwpKgHY3xy4IT2NCoWfPFIzj',0,4),(14,'name','add1','add2','','','','2022-10-11 11:23:45.527479','2022-10-11 11:23:45.527479',200.90,'pi_3LrgYTDa1vyXZ3J110mfC8TT_secret_DxUF2vJ2rrCgpvb9T5lzEa6OQ',0,4),(15,'name','add1','add2','','','','2022-10-12 16:20:00.117635','2022-10-12 16:20:00.117635',200.90,'pi_3Ls7eNDa1vyXZ3J10XEkEEMX_secret_1VM3rwu3Aa0HsV7XMMxRlwxMX',0,4);
 /*!40000 ALTER TABLE `order_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -649,7 +650,7 @@ CREATE TABLE `order_orderitem` (
   CONSTRAINT `order_orderitem_order_id_aba34f44_fk_order_order_id` FOREIGN KEY (`order_id`) REFERENCES `order_order` (`id`),
   CONSTRAINT `order_orderitem_product_id_c5c6b07a_fk_main_item_id` FOREIGN KEY (`product_id`) REFERENCES `main_item` (`id`),
   CONSTRAINT `order_orderitem_chk_1` CHECK ((`quantity` >= 0))
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -658,7 +659,7 @@ CREATE TABLE `order_orderitem` (
 
 LOCK TABLES `order_orderitem` WRITE;
 /*!40000 ALTER TABLE `order_orderitem` DISABLE KEYS */;
-INSERT INTO `order_orderitem` VALUES (1,190.90,1,5,23),(2,190.90,1,6,23),(3,190.90,1,7,23),(4,190.90,1,8,23),(5,190.90,1,9,23),(6,165.90,1,10,25),(7,155.90,1,11,24);
+INSERT INTO `order_orderitem` VALUES (1,190.90,1,5,23),(2,190.90,1,6,23),(3,190.90,1,7,23),(4,190.90,1,8,23),(5,190.90,1,9,23),(6,165.90,1,10,25),(7,155.90,1,11,24),(8,200.90,1,12,27),(9,165.90,1,13,25),(10,155.90,1,13,24),(11,200.90,1,14,27),(12,200.90,1,15,27);
 /*!40000 ALTER TABLE `order_orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -671,4 +672,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-08 13:15:36
+-- Dump completed on 2022-10-26 20:17:05
