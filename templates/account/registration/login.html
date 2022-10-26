@@ -32,7 +32,7 @@
                                 <h3 class="mb-4">Вход</h3>
 
                                 {% if form.errors %}
-                                <div class="alert alert-primary" role="alert">
+                                <div class="alert alert-primary text-center px-1" role="alert">
                                     Ошибка: Имя пользователя или пароль не верен!
                                 </div>
                                 {% endif %}
@@ -44,7 +44,7 @@
                                 {{ form.password}}
                                 <div class="d-grid gap-2">
                                     <input type="hidden" name="next" value="{{ next }}">
-                                    <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Войти
+                                    <button class="btn btn-primary btn-block py-2 mb-4 mt-5 fw-bold w-100" type="submit" value="Log-in">Войти
                                     </button>
                                 </div>
                                 <p class="text-center pb-3">

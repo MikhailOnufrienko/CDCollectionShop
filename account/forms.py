@@ -98,16 +98,19 @@ class UserEditForm(forms.ModelForm):
 
     user_name = forms.CharField(
         label='Имя пользователя', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Имя', 'id': 'form-firstname',
-                   'readonly': 'readonly'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-username'}))
 
     first_name = forms.CharField(
-        label='Имя пользователя', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Имя', 'id': 'form-lastname'}))
+        label='Ваше имя', min_length=4, max_length=50, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Ваше имя', 'id': 'form-firstname'}))
+
+    last_name = forms.CharField(
+        label='Ваша фамилия', min_length=4, max_length=50, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Ваша фамилия', 'id': 'form-lastname'}))
 
     class Meta:
         model = UserBase
-        fields = ('email', 'user_name', 'first_name',)
+        fields = ('email', 'user_name', 'first_name', 'last_name')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
