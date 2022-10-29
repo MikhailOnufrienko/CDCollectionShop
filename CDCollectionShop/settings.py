@@ -146,3 +146,15 @@ LOGIN_URL = '/account/login/'
 
 # Basket session ID
 BASKET_SESSION_ID = 'basket'
+
+#SMTP config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = '465'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'ghast13@yandex.ru'
+EMAIL_HOST_PASSWORD = 'gkxigstlwkzxxoce'
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

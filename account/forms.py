@@ -69,24 +69,34 @@ class RegistrationForm(forms.ModelForm):
 
 class PwdResetForm(PasswordResetForm):
 
-    email = forms.EmailField(max_length=254, widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email'}))
+    email = forms.EmailField(
+        max_length=254,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control mb-3',
+                'placeholder': 'Email',
+                'id': 'form-email'
+            }
+        ),
+        label='Электронная почта'
+    )
 
     def clean_email(self):
         email = self.cleaned_data['email']
         u = UserBase.objects.filter(email=email)
         if not u:
             raise forms.ValidationError(
-                'К сожалению, данный адрес электронной почты не найден.')
+                'К сожалению, данный адрес электронной почты не найден.'
+            )
         return email
 
 
 class PwdResetConfirmForm(SetPasswordForm):
     new_password1 = forms.CharField(
-        label='New password', widget=forms.PasswordInput(
+        label='Новый пароль', widget=forms.PasswordInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-newpass'}))
     new_password2 = forms.CharField(
-        label='Repeat password', widget=forms.PasswordInput(
+        label='Повторите пароль', widget=forms.PasswordInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-new-pass2'}))
 
 

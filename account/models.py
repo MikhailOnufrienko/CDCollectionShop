@@ -73,7 +73,7 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
         send_mail(
             subject,
             message,
-            'info@cdcollectionshop.site',
+            'ghast13@yandex.ru',
             [self.email],
             fail_silently=False,
         )

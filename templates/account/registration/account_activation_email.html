@@ -1,7 +1,14 @@
-{% autoescape off %}
-<p>Привет, {{ user.user_name }}!</p>
+{% autoescape on %}
 
-<p>Вы успешно создали свою учётную запись. Нажмите на ссылку ниже, чтобы активировать её:</p>
+<p>
+  Привет, {{ user.user_name }}!
+</p>
+
+<p>
+  Вы успешно создали свою учётную запись.<br>
+  Нажмите на ссылку ниже, чтобы активировать её:
+</p>
 
 http://{{ domain }}{% url 'account:activate' uidb64=uid token=token %}
+
 {% endautoescape %}

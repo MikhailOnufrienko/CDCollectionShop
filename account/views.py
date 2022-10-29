@@ -1,4 +1,5 @@
 from django.contrib.auth import login, logout
+from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
@@ -9,7 +10,7 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from order.views import user_orders
 
-from .forms import RegistrationForm, UserEditForm
+from .forms import RegistrationForm, UserEditForm, PwdResetForm
 from .models import UserBase
 from .tokens import account_activation_token
 
@@ -67,7 +68,8 @@ def account_register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject=subject, message=message)
-            return HttpResponse('registered successfully and activation sent')
+            return HttpResponse('Вы успешно зарегистрировались!\n'
+                                'На указанную почту было послано письмо с ссылкой для активации.')
     else:
         registerForm = RegistrationForm()
     return render(request, 'account/registration/register.html', {'form': registerForm})
@@ -86,3 +88,10 @@ def account_activate(request, uidb64, token):
         return redirect('account:dashboard')
     else:
         return render(request, 'account/registration/activation_invalid.html')
+
+
+class PwdResetView(PasswordResetView):
+    template_name = 'account/user/password_reset_form.html'
+    form_class = PwdResetForm
+    email_template_name = 'account/user/password_reset_email.html'
+    success_url = 'password_reset_email_confirm'
