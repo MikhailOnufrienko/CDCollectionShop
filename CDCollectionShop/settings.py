@@ -147,6 +147,11 @@ LOGIN_URL = '/account/login/'
 # Basket session ID
 BASKET_SESSION_ID = 'basket'
 
+# Stripe payment
+STRIPE_ENDPOINT_SECRET = str(os.getenv('STRIPE_ENDPOINT_SECRET'))
+STRIPE_SECRET_KEY = str(os.getenv('STRIPE_SEC_KEY'))
+STRIPE_PUBLISHABLE_KEY = str(os.getenv('STRIPE_PUB_KEY'))
+
 # SMTP config
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
