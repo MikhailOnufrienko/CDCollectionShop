@@ -1,6 +1,10 @@
 {% extends "main/basic.html" %}
 {% load static %}
-{% block title %}Payment{% endblock %}
+
+{% block title %}
+Payment
+{% endblock %}
+
 {% block content %}
 
 <style>
@@ -27,77 +31,104 @@
         <div class="container">
           <div class="row">
             <div id="payment-form" class="col-12 col-lg-6 mx-auto">
-              <h3 class="mb-3">Billing address</h3>
-              <!-- Error messages in this element -->
-              <div id="card-errors" class="a" role="alert"></div>
+              <h3 class="mb-3">
+                Адрес доставки
+              </h3>
+              <div id="card-errors" class="a" role="alert">
+                <!-- Сообщения об ошибках. -->
+              </div>
               <form>
                 <div class="row g-3">
                   <div class="col-sm-7">
-                    <label for="firstName" class="form-label">Customer Name</label>
+                    <label for="firstName" class="form-label">
+                      Имя и фамилия
+                    </label>
                     <input type="text" class="form-control" id="custName" placeholder="" required>
                     <div class="invalid-feedback">
-                      Valid first name is required.
+                      Требуется ввести действительные имя и фамилию.
                     </div>
                   </div>
-                  <div class="col-12">
-                    <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                  <div class="col-12 mt-2">
+                    <label for="email" class="form-label">
+                      Электронная почта
+                    </label>
+                    <input type="email" class="form-control" id="email" placeholder="you@example.ru" required>
                     <div class="invalid-feedback">
-                      Please enter a valid email address for shipping updates.
+                      Требуется ввести действительную электронную почту.<br>
+                      На неё будут приходить уведомления о состоянии заказа.
                     </div>
                   </div>
-                  <div class="col-12">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="custAdd" placeholder="1234 Main St" required>
+                  <div class="col-12 mt-2">
+                    <label for="address" class="form-label">
+                      Адрес (город, улица, номер дома, квартиры)
+                    </label>
+                    <input type="text" class="form-control" id="custAdd" required>
                     <div class="invalid-feedback">
-                      Please enter your shipping address.
+                      Требуется ввести действительный почтовый адрес.
                     </div>
                   </div>
-                  <div class="col-12">
-                    <label for="address2" class="form-label">Address 2 <span
-                        class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="custAdd2" placeholder="Apartment or suite">
-                  </div>
-                  <div class="col-md-5">
-                    <label for="country" class="form-label">Country</label>
+                  <div class="col-md-4 mt-2">
+                    <label for="country" class="form-label">
+                      Страна
+                    </label>
                     <select class="form-select" id="country" required>
-                      <option value="">Choose...</option>
-                      <option>United States</option>
+                      <option value="">
+                        Выберите...
+                      </option>
+                      <option>
+                        Россия
+                      </option>
                     </select>
                     <div class="invalid-feedback">
-                      Please select a valid country.
+                      Требуется указать название страны.
                     </div>
                   </div>
-                  <div class="col-md-4">
-                    <label for="state" class="form-label">State</label>
+                  <div class="col-md-4 mt-2 pl-0">
+                    <label for="state" class="form-label">
+                      Регион
+                    </label>
                     <select class="form-select" id="state" required>
-                      <option value="">Choose...</option>
-                      <option>California</option>
+                      <option value="">
+                        Выберите...
+                      </option>
+                      <option>
+                        Москва
+                      </option>
+                      <option>
+                        Санкт-Петербург
+                      </option>
                     </select>
                     <div class="invalid-feedback">
-                      Please provide a valid state.
+                      Требуется указать название региона.
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <label for="Postcode" class="form-label">Postcode</label>
-                    <input type="text" class="form-control" id="postCode" placeholder="" required>
+                  <div class="col-md-4 mt-2">
+                    <label for="Postcode" class="form-label">
+                      Индекс
+                    </label>
+                    <input type="text" class="form-control" style="height: 40%;" id="postCode" placeholder="123456" required>
                     <div class="invalid-feedback">
-                      Zip code required.
+                      Требуется указать почтовый индекс.
                     </div>
                   </div>
                 </div>
                 <hr class="my-4">
-                <h4 class="mb-3">Payment</h4>
+                <h4 class="mb-3">
+                  Оплата
+                </h4>
                 <label for="card-element">
-                  Credit or debit card.<br>
-                  For test purposes, enter "4242 4242 4242 4242", any date (month/year) later than the current ones,
-                  any 3 digits for the CVV code and any 5 digits for the index.
+                  Кредитная или дебетовая карта.<br>
+                  В качестве номера карты введите "4242 4242 4242 4242",<br>
+                  в качестве даты любой месяц/год позже текущих,<br>
+                  вместо CVC-кода введите любые три цифры, вместо индекса любые пять цифр.
                 </label>
                 <div id="card-element" class="form-control form-control-payment">
-                  <!-- Payment elements will appear here -->
+                  <!-- Элементы поля оплаты картой. -->
                 </div>
                 <hr class="my-4">
-                <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{ client_secret }}">Pay</button>
+                <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{ client_secret }}">
+                  Оплатить
+                </button>
               </form>
             </div>
           </div>
@@ -109,8 +140,8 @@
 
 
 <script>
-    {% comment %} Make csrf token available in JS files {% endcomment %}
-    var CSRF_TOKEN = '{{ csrf_token }}';
+  {% comment %}Make csrf token available in JS files{% endcomment %}
+  var CSRF_TOKEN = '{{ csrf_token }}';
 </script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{% static 'payment/index.js' %}" data-rel-js></script>

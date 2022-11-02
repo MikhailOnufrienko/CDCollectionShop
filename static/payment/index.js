@@ -38,7 +38,6 @@ ev.preventDefault();
 
 var custName = document.getElementById("custName").value;
 var custAdd = document.getElementById("custAdd").value;
-var custAdd2 = document.getElementById("custAdd2").value;
 var postCode = document.getElementById("postCode").value;
 
 
@@ -47,8 +46,8 @@ var postCode = document.getElementById("postCode").value;
     url: 'http://127.0.0.1:8000/order/add/',
     data: {
       order_key: clientsecret,
-      csrfmiddlewaretoken: CSRF_TOKEN,
       action: "post",
+      csrfmiddlewaretoken: CSRF_TOKEN
     },
     success: function (json) {
       console.log(json.success)
@@ -58,8 +57,7 @@ var postCode = document.getElementById("postCode").value;
           card: card,
           billing_details: {
             address:{
-                line1:custAdd,
-                line2:custAdd2
+                line1:custAdd
             },
             name: custName
           },
