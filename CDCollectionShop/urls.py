@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import (include, path)
+from django.urls import (include, path, re_path)
 from django.conf.urls import (handler404, handler500)
 from main.views import (other_pages, page_not_found, server_error)
 
@@ -14,6 +14,10 @@ urlpatterns = [
     path('account/', include('account.urls', namespace='account')),
     path('order/', include('order.urls', namespace='order')),
     path('payment/', include('payment.urls', namespace='payment')),
+    path('api/v1/', include('api.main.urls', namespace='api_main')),
+    path('api/v1/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/v1/dj-auth/', include('djoser.urls')),
+    re_path(r'^dj-auth/', include('djoser.urls.authtoken')),
     path('<str:page>/', other_pages, name='other'),
     path('404/', page_not_found, name='404'),
     path('500/', server_error, name='500'),
