@@ -1,11 +1,4 @@
-from django.forms import model_to_dict
-from rest_framework import generics, mixins, status, viewsets
-from rest_framework.decorators import action
-from rest_framework import permissions
 from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.views import APIView
-
 from .permissions import IsAdminOrReadOnly
 from .serializers import ArtistsSerializer, ItemsSerializer
 from main.models import Artist, Item
