@@ -5,6 +5,7 @@
 {% block title %}{{ artist }}{% endblock title %}
 
 {% block content %}
+
 <div>
   <div class="text-center">
     {% if artist.country %}
@@ -45,36 +46,6 @@
     </p>
     {% endfor %}
   </div>
-
-
-
-
-  <!--<div class="text-center pb-3">
-    {% if not artist.item_set.all %}
-    <h4>
-      К сожалению, релизов данного исполнителя в продаже пока нет.
-    </h4>
-    {% else %}
-    <h4>
-      Релизы исполнителя в продаже:
-    </h4>
-  </div>
-  <div>
-    {% for item in artist.item_set.all %}
-      <div>
-        <div>
-          <a href="{% url 'main:item_detail' item.pk item.slug %}">
-            <img src="{% get_static_prefix %}main/covers/{{ item.pk }}.jpg"
-            style="width: 350px;" alt="{{ item }}" title="{{ album }}">
-          </a>
-          <h5>
-            {{ item }} ({{ item.year }}, {{ item.get_labels }})
-          </h5>
-        </div>
-      </div>
-    {% endfor %}
-    {% endif %}
-  </div>-->
 </div>
  
 {% endblock content %}
