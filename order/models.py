@@ -5,7 +5,7 @@ from main.models import Item
 
 
 class Order(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='order_user')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_orders')
     full_name = models.CharField(max_length=50)
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=100)
@@ -21,7 +21,7 @@ class Order(models.Model):
         ordering = ('-created',)
 
     def __str__(self):
-        return str(self.created)
+        return str(self.id)
 
 
 class OrderItem(models.Model):

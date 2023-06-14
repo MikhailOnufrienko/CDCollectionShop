@@ -73,7 +73,7 @@ class ItemStyle(models.Model):
 class Item(models.Model):
     album = models.CharField(max_length=128, verbose_name='Альбом')
     item_type = models.ForeignKey(ItemType, related_name='items', default='CD', on_delete=models.PROTECT)
-    artists = models.ManyToManyField(Artist)
+    artists = models.ManyToManyField(Artist, related_name='get_items')
     styles = models.ManyToManyField(ItemStyle)
     slug = models.SlugField(max_length=128, db_index=True, verbose_name='URL')
     label = models.ForeignKey(Label, related_name='items', verbose_name='Лейбл', on_delete=models.PROTECT)
